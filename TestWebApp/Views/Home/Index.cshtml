@@ -1,0 +1,28 @@
+﻿@using TestWebApp.Models
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+<h1>Поисковики</h1>
+@foreach (SearchEngine item in ViewBag.Engines)
+{
+    <a href="@item.Url">@item.Name</a>
+    <br />
+}
+
+<div class="form-inline">
+    <input class="form-control" type="text" name="search" placeholder="Search.." />
+    <a id="searchBtn" class="btn btn-primary">Submit</a>
+</div>
+
+<div class="container">
+    @foreach (SearchResult item in ViewBag.SearchResult)
+    {
+        <div>
+            <h2>@item.Header</h2>
+            <p><h4>@item.Content</h4></p>
+            <a href="@item.Url"><h5>@item.Url</h5></a>
+        </div>
+    }
+</div>
